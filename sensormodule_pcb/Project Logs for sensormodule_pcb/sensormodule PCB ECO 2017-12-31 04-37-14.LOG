@@ -1,7 +1,0 @@
-Removed Pin From Net: NetName=GND Pin=C9-1
-Removed Pin From Net: NetName=VDD_2V8 Pin=R1-2
-Removed Pin From Net: NetName=GND Pin=U5-GND
-Removed Pin From Net: NetName=GND Pin=U5-GND
-Removed Member From Class: ClassName=sensormodule Member=C9
-Removed Member From Class: ClassName=sensormodule Member=R1
-Removed Member From Class: ClassName=sensormodule Member=U5
