@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : PCB Document [sensormodule_panel.PcbDoc]
+   Generated File[sensormodule_panel.TXT]
+   Generated File[sensormodule_panel.LDP]
+   Generated File[sensormodule_panel.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 15:54:07 On 2018-01-01

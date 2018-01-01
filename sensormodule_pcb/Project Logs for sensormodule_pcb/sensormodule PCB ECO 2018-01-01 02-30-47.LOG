@@ -1,0 +1,22 @@
+Removed Pin From Net: NetName=NetR3_1 Pin=U3-7
+Added Component: Designator=D3(CAPCP1005X06N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "value"; Value = "RED"; VariantName = "[No Variations]"
+Added Component: Designator=R10(RESC1005X04N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "value"; Value = "470R"; VariantName = "[No Variations]"
+Added Component: Designator=R11(RESC1005X04N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "value"; Value = "4K7"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VDD_2V8 Pin=D3-1
+Added Pin To Net: NetName=NetR3_1 Pin=R11-1
+Added Pin To Net: NetName=NetD3_C Pin=D3-2
+Added Pin To Net: NetName=NetD3_C Pin=R10-2
+Added Net: Name=NetD3_C
+Added Pin To Net: NetName=NetR10_1 Pin=R10-1
+Added Pin To Net: NetName=NetR10_1 Pin=R11-2
+Added Pin To Net: NetName=NetR10_1 Pin=U3-7
+Added Net: Name=NetR10_1
+Added Member To Class: ClassName=sensormodule Member=Component D3 led
+Added Member To Class: ClassName=sensormodule Member=Component R10 res
+Added Member To Class: ClassName=sensormodule Member=Component R11 res
