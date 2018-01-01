@@ -254,67 +254,23 @@ DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensorm
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument5]
 DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.DRR
 DItemRevisionGUID=
 
-[GeneratedDocument6]
+[GeneratedDocument5]
 DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.EXTREP
 DItemRevisionGUID=
 
-[GeneratedDocument7]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GBO
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GBP
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GTP
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument16]
+[GeneratedDocument6]
 DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.LDP
 DItemRevisionGUID=
 
-[GeneratedDocument17]
+[GeneratedDocument7]
 DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.REP
 DItemRevisionGUID=
 
-[GeneratedDocument18]
+[GeneratedDocument8]
 DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.RUL
-DItemRevisionGUID=
-
-[GeneratedDocument19]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.TXT
 DItemRevisionGUID=
 
 [Configuration1]
