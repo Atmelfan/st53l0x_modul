@@ -52,5 +52,8 @@ Mkfile.old
 dkms.conf
 
 History/
+.idea/
+cmake-build-debug
+cmake-build-release
 __Previews/
 Project\ Logs\ for*/
