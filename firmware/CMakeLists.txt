@@ -17,17 +17,16 @@ set(DEVICE STM32L0)
 set(GCC_LINKERFLAGS "--static -nostartfiles")
 set(GCC_LINKERFLAGS "${GCC_LINKERFLAGS} -T${LINKER_SCRIPT}" )
 set(GCC_LINKERFLAGS ${GCC_LINKERFLAGS} -Wl,--print-memory-usage )
-set(GCC_LINKERFLAGS "${GCC_LINKERFLAGS} -Wl,--gc-sections -Wl,--strip-all" )
+set(GCC_LINKERFLAGS "${GCC_LINKERFLAGS} -Wl,--gc-sections" )
 set(GCC_LINKERFLAGS "${GCC_LINKERFLAGS} -Wl,-Map=mem.map" )
 #set(GCC_LINKERFLAGS "${GCC_LINKERFLAGS} -Wl,--print-gc-sections" ) #Annoying as hell
-set(GCC_LINKERFLAGS "${GCC_LINKERFLAGS}" )
 
 
 set(GCC_LINKLIBRARIES "-lopencm3_stm32l0")
 set(GCC_LINKLIBRARIES "${GCC_LINKLIBRARIES} --specs=nano.specs -Wl,--start-group -lnosys -lgcc -lc -lm -Wl,--end-group -lrdimon" )
 
 #set(GCC_FPFLAGS "-mfloat-abi=soft -mfpu=fpv4-sp-d16" )
-set(GCC_ARCHFLAGS "-mthumb -mcpu=cortex-m0plus ${GCC_FPFLAGS}" )
+set(GCC_ARCHFLAGS "-mthumb -mcpu=cortex-m0plus" )
 
 set(GCC_CFLAGS "-g -Os -fno-builtin -Wextra -Wshadow -Wimplicit-function-declaration")
 set(GCC_CFLAGS "${GCC_CFLAGS} -Wredundant-decls -Wmissing-prototypes -Wstrict-prototypes")
@@ -41,20 +40,31 @@ set(GCC_CPPFLAGS "${GCC_ARCHFLAGS} -MD -Wall -Wundef -I${LIBOCM3}/include -D${DE
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GCC_CFLAGS} ${GCC_CCPFLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_CXXFLAGS} ${GCC_CCPFLAGS}")
 
-
-set(CMAKE_C_STANDARD 99)
+#set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
 
 add_subdirectory(vl53l0x_api)
 include_directories(vl53l0x_api/core/inc vl53l0x_api/platform/inc)
 
 
 set(SOURCE_FILES main.c ${VL53L0X_SOURCES})
-message(WARNING ${SOURCE_FILES})
 include_directories(${LIBOCM3}/include)
 link_directories(${LIBOCM3}/lib )
 add_definitions( ${GCC_CPPFLAGS})
 
 add_executable(sensor_modules ${SOURCE_FILES})
-set_target_properties(sensor_modules PROPERTIES OUTPUT_NAME "sensor_module.elf")
+set_target_properties(sensor_modules PROPERTIES OUTPUT_NAME "sensor_module_complete.elf")
+
 target_link_libraries(sensor_modules ${GCC_LINKLIBRARIES} ${GCC_LINKERFLAGS} ${GCC_ARCHFLAGS})
 #set_target_properties(src_carrier PROPERTIES LINK_DEPENDS ${LINKER_SCRIPT})
+
+add_custom_target(debug ALL
+        DEPENDS sensor_modules sensor_module.debug sensor_module)
+
+add_custom_command(
+        OUTPUT sensor_module.debug
+        COMMAND arm-none-eabi-objcopy --only-keep-debug ${CMAKE_CURRENT_SOURCE_DIR}/cmake-build-debug/sensor_module_complete.elf sensor_module.debug
+        )
+add_custom_command(
+        OUTPUT sensor_module
+        COMMAND arm-none-eabi-objcopy --strip-debug ${CMAKE_CURRENT_SOURCE_DIR}/cmake-build-debug/sensor_module_complete.elf sensor_module
+        )

@@ -1,0 +1,19 @@
+author: "GPA-875-000"
+export-author: false
+match-by-name: true
+
+options:
+  - spi_address:
+      type: "int8"
+      default: 1
+      offset: 0
+  - lpu_address:
+      type: "int8"
+      default: 1
+      offset: 0
+  - enable_uart:
+      type: "boolean"
+      default: 1
+
+
+gpa_options default.yml --header "options.h" --ihex "options.hex"

@@ -34,9 +34,9 @@ static void i2c_setup(void)
 static void gpio_setup(void)
 {
     rcc_periph_clock_enable(RCC_GPIOA);
-    gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE,
-                    GPIO8 | GPIO9 | GPIO10 | GPIO11 | GPIO12 | GPIO13 |
-                    GPIO14 | GPIO15);
+    //gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE,
+    //                GPIO8 | GPIO9 | GPIO10 | GPIO11 | GPIO12 | GPIO13 |
+    //                GPIO14 | GPIO15);
 }
 
 static void usart_setup(void)
@@ -71,7 +71,6 @@ static void clock_setup(void)
     rcc_periph_clock_enable(RCC_GPIOB);
 
     /* Enable clocks for GPIO port A (for GPIO_USART2_TX) and USART2. */
-    rcc_periph_clock_enable(RCC_GPIOA);
     rcc_periph_clock_enable(RCC_I2C1);
 
     /* Enable SPI1 Periph and gpio clocks */
@@ -94,9 +93,9 @@ static void usart_puts(const char* s){
 int main(){
 
     clock_setup();
-    i2c_setup();
-    usart_setup();
-    gpio_setup();
+    //i2c_setup();
+    //usart_setup();
+    //gpio_setup();
 
 
     //printf("Hello, World!\n");
@@ -125,7 +124,7 @@ int main(){
 
     if(Status == VL53L0X_ERROR_NONE)
     {
-        status_int = VL53L0X_GetVersion(pVersion);
+        //status_int = VL53L0X_GetVersion(pVersion);
         if (status_int != 0)
             Status = VL53L0X_ERROR_CONTROL_INTERFACE;
     }
@@ -133,12 +132,12 @@ int main(){
     if(Status == VL53L0X_ERROR_NONE)
     {
         //printf ("Call of VL53L0X_DataInit\n");
-        Status = VL53L0X_DataInit(&MyDevice); // Data initialization
+        //Status = VL53L0X_DataInit(&MyDevice); // Data initialization
     }
 
     if(Status == VL53L0X_ERROR_NONE)
     {
-        Status = VL53L0X_GetDeviceInfo(&MyDevice, &DeviceInfo);
+        //Status = VL53L0X_GetDeviceInfo(&MyDevice, &DeviceInfo);
         if(Status == VL53L0X_ERROR_NONE)
         {
             //printf("VL53L0X_GetDeviceInfo:\n");
@@ -158,19 +157,19 @@ int main(){
     if(Status == VL53L0X_ERROR_NONE)
     {
         //printf ("Call of VL53L0X_StaticInit\n");
-        Status = VL53L0X_StaticInit(pMyDevice); // Device Initialization
+        //Status = VL53L0X_StaticInit(pMyDevice); // Device Initialization
     }
 
     if(Status == VL53L0X_ERROR_NONE)
     {
         //printf ("Call of VL53L0X_PerformRefCalibration\n");
-        Status = VL53L0X_PerformRefCalibration(pMyDevice, &VhvSettings, &PhaseCal); // Device Initialization
+        //Status = VL53L0X_PerformRefCalibration(pMyDevice, &VhvSettings, &PhaseCal); // Device Initialization
     }
 
     if(Status == VL53L0X_ERROR_NONE)
     {
         //printf ("Call of VL53L0X_PerformRefSpadManagement\n");
-        Status = VL53L0X_PerformRefSpadManagement(pMyDevice, &refSpadCount, &isApertureSpads); // Device Initialization
+        //Status = VL53L0X_PerformRefSpadManagement(pMyDevice, &refSpadCount, &isApertureSpads); // Device Initialization
         //printf ("refSpadCount = %d, isApertureSpads = %d\n", refSpadCount, isApertureSpads);
     }
 
@@ -179,7 +178,7 @@ int main(){
 
         // no need to do this when we use VL53L0X_PerformSingleRangingMeasurement
         //printf ("Call of VL53L0X_SetDeviceMode\n");
-        Status = VL53L0X_SetDeviceMode(pMyDevice, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING); // Setup in single ranging mode
+        //Status = VL53L0X_SetDeviceMode(pMyDevice, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING); // Setup in single ranging mode
     }
 
     // Enable/Disable Sigma and Signal check
@@ -200,10 +199,10 @@ int main(){
     for(;;){
         if(Status == VL53L0X_ERROR_NONE)
         {
-            Status = VL53L0X_PerformSingleRangingMeasurement(pMyDevice, &RangingMeasurementData);
-            usart_send(USART1, RangingMeasurementData.RangeMilliMeter);
+            //Status = VL53L0X_PerformSingleRangingMeasurement(pMyDevice, &RangingMeasurementData);
+            //usart_send(USART1, RangingMeasurementData.RangeMilliMeter);
 
-            VL53L0X_GetLimitCheckCurrent(pMyDevice, VL53L0X_CHECKENABLE_RANGE_IGNORE_THRESHOLD, &LimitCheckCurrent);
+            //VL53L0X_GetLimitCheckCurrent(pMyDevice, VL53L0X_CHECKENABLE_RANGE_IGNORE_THRESHOLD, &LimitCheckCurrent);
         }
 
     }
