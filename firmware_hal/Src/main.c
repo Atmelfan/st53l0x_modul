@@ -59,8 +59,7 @@ void SystemClock_Config(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-extern void update();
-extern void init();
+
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -96,7 +95,7 @@ int main(void)
   MX_SPI1_Init();
 
   /* USER CODE BEGIN 2 */
-  init();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -106,14 +105,7 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    update();
-//    LL_I2C_HandleTransfer(I2C1, 0x0AA, LL_I2C_ADDRSLAVE_7BIT, 1, LL_I2C_MODE_AUTOEND, LL_I2C_GENERATE_START_WRITE);
-//    while(!LL_I2C_IsActiveFlag_STOP(I2C1)){
-//      if(LL_I2C_IsActiveFlag_TXE(I2C1)){
-//        LL_I2C_TransmitData8(I2C1, 0xFF);
-//      }
-//    }
-//    LL_I2C_ClearFlag_STOP(I2C1);
+
   }
   /* USER CODE END 3 */
 

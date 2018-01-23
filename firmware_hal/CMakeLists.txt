@@ -52,6 +52,7 @@ set(MCU "${CPU} -mthumb ${FPU} ${FLOAT_ABI}")
 #Definitions
 add_definitions(-DUSE_FULL_LL_DRIVER)
 add_definitions(-DSTM32L011xx)
+add_definitions(-DUSE_i2C_2V8)
 
 #flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MCU} ${OPT} -Wall -fdata-sections -ffunction-sections")
