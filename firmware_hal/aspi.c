@@ -5,7 +5,7 @@
 #include "aspi.h"
 
 aspi_status current_state = ASPI_STAT_FREE;
-uint8_t len, addr, err;
+uint8_t len, addr, err, count;
 
 int wait;
 
@@ -27,6 +27,7 @@ void aspi_comm_deselect() {
     }
     /*Reset state*/
     current_state = ASPI_STAT_FREE;
+    count = 0;
 }
 
 uint8_t aspi_comm_rxtx(uint8_t d, uint8_t *t) {
@@ -51,7 +52,7 @@ uint8_t aspi_comm_rxtx(uint8_t d, uint8_t *t) {
 
         /** Handle direct transaction*/
         case ASPI_STAT_DIRECT:
-            *t = aspi_rx_handler(d);
+            *t = aspi_rx_handler(d, count++);
             break;
 
         /** Handle chain transaction*/
@@ -61,14 +62,20 @@ uint8_t aspi_comm_rxtx(uint8_t d, uint8_t *t) {
             uint8_t w = aspi_start_handler(addr, len);
             //Reset if start handler does not recognise address
             if(w == 0){
+                //Address is rejected, reset
                 current_state = ASPI_STAT_FREE;
+            }else if(w == 1){
+                //Zeroth device in chain, do not wait
+                current_state = ASPI_STAT_CHAIN;
             }else{
-                current_state = ASPI_STAT_CHAIN_WAIT;
+                //(w - 1)'th in chain, wait (w - 1)*len bytes before
                 wait = (w - 1)*len;//Number of bytes to wait for
+                current_state = ASPI_STAT_CHAIN_WAIT;
             }
             break;
 
         case ASPI_STAT_CHAIN_WAIT:
+            //Wait for N*(w - 1) bytes...
             wait--;
             if(wait == 0){
                 current_state = ASPI_STAT_CHAIN;
@@ -80,7 +87,7 @@ uint8_t aspi_comm_rxtx(uint8_t d, uint8_t *t) {
             if(len == 0){
                 current_state = ASPI_STAT_CHAIN_DONE;
             }
-            *t = aspi_rx_handler(d);
+            *t = aspi_rx_handler(d, count++);
             return 1;
 
         default:
@@ -97,6 +104,10 @@ uint8_t aspi_get_length() {
     return len;
 }
 
+uint8_t aspi_get_addr(){
+    return addr;
+}
+
 void aspi_throw(uint8_t _err) {
     err = _err;
     //Reset state and call end handler if relevant
@@ -106,6 +117,8 @@ void aspi_throw(uint8_t _err) {
 uint8_t aspi_get_error() {
     return err;
 }
+
+
 
 
 

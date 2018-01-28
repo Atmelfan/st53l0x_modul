@@ -7,6 +7,7 @@
 #include <spi.h>
 #include <vl53l0x_api.h>
 #include <vl53l0x_platform.h>
+#include "aspi.h"
 
 #define VL53L0x_BASE_ADDR 0x52
 
@@ -88,14 +89,24 @@ void update(){
 }
 
 
-void aspi_rx_handler(){
+ASPI_START(addr, chain){
+
+    return ASPI_NUM_ADDR(0x10, addr);
+}
+
+ASPI_END(status){
 
 }
 
-void aspi_start_handler(){
+ASPI_RX(rx, i){
+    static int index = 0;
+    if(i == 0){
+        index = rx;
+    }else{
 
-}
+        index--;
 
-void aspi_end_handler(){
+    }
 
+    return rx;
 }
