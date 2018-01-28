@@ -69,6 +69,7 @@ void init(){
     delay_us(500);
 
 }
+
 uint8_t ready;
 VL53L0X_RangingMeasurementData_t range;
 void update(){
@@ -78,9 +79,23 @@ void update(){
         if(ready && status == VL53L0X_ERROR_NONE){
             VL53L0X_GetRangingMeasurementData(&tof_sensors[i].dev, &range);
             VL53L0X_ClearInterruptMask(&tof_sensors[i].dev, VL53L0X_REG_SYSTEM_INTERRUPT_GPIO_NEW_SAMPLE_READY);
-            delay_us(1000);
+
 
         }
+        delay_us(1000);
         LL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
     }
+}
+
+
+void aspi_rx_handler(){
+
+}
+
+void aspi_start_handler(){
+
+}
+
+void aspi_end_handler(){
+
 }
