@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: sensormodule_panel.PcbDoc   2018-01-01  15:54:07
+NCDrill File Report For: sensormodule_panel.PcbDoc   2018-01-03  02:24:25
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -7,10 +7,10 @@ ASCII RoundHoles File : sensormodule_panel.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      12mil (0.3mm)                                             Round             40        PTH        11.58inch (294.02mm)
+T1      12mil (0.3mm)                                             Round             152       PTH        17.42inch (442.46mm)
 T2      14mil (0.351mm)                                           Round             116       PTH        13.76inch (349.41mm)
 T3      24mil (0.599mm)                                           Round             72        PTH        7.39inch (187.74mm)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              228
+Totals                                                                              340
 
 Total Processing Time (hh:mm:ss) : 00:00:00

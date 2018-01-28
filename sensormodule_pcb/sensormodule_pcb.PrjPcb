@@ -28,7 +28,7 @@ DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
 FSMCodingStyle=eFMSDropDownList_OneProcess
 FSMEncodingStyle=eFMSDropDownList_OneHot
-OutputPath=Project Outputs for sensormodule_pcb
+OutputPath=
 LogFolderPath=
 ManagedProjectGUID=
 LinkedManagedProjectGUID=
@@ -241,36 +241,85 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AIXSLSOU
 
+[Document13]
+DocumentPath=CAMtastic1.Cam
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [GeneratedDocument1]
 DocumentPath=Project Outputs for sensormodule_pcb\Design Rule Check - sensormodule.html
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule.DRR
-DItemRevisionGUID=
-
-[GeneratedDocument3]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule.LDP
-DItemRevisionGUID=
-
-[GeneratedDocument4]
 DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.DRR
 DItemRevisionGUID=
 
-[GeneratedDocument5]
+[GeneratedDocument3]
 DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.EXTREP
 DItemRevisionGUID=
 
+[GeneratedDocument4]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GBO
+DItemRevisionGUID=
+
 [GeneratedDocument6]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.LDP
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GBP
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.REP
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument8]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.REP
+DItemRevisionGUID=
+
+[GeneratedDocument15]
 DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for sensormodule_pcb\Generate Files\gerbers\sensormodule_panel.TXT
 DItemRevisionGUID=
 
 [Configuration1]
@@ -319,7 +368,7 @@ SCH_HasExpandLogicalToPhysicalSheets=-1
 SaveSettingsToOutJob=-1
 
 [Generic_EDE]
-OutputDir=Project Outputs for sensormodule_pcb
+OutputDir=
 
 [OutputGroup1]
 Name=Netlist Outputs
