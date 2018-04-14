@@ -31,6 +31,8 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
+#include <assert.h>
+#include <stdbool.h>
 #include "stm32l0xx.h"
 #include "stm32l0xx_it.h"
 
@@ -67,6 +69,8 @@ void HardFault_Handler(void)
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
+    /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+    /* USER CODE END W1_HardFault_IRQn 0 */
   }
   /* USER CODE BEGIN HardFault_IRQn 1 */
 
@@ -121,15 +125,54 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
+* @brief This function handles EXTI line 4 to 15 interrupts.
+*/
+void EXTI4_15_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI4_15_IRQn 0 */
+
+  /* USER CODE END EXTI4_15_IRQn 0 */
+  if (LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_4) != RESET)
+  {
+    LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_4);
+    /* USER CODE BEGIN LL_EXTI_LINE_4 */
+    extern void sensor_exti4_select();
+      sensor_exti4_select();
+    /* USER CODE END LL_EXTI_LINE_4 */
+  }
+  /* USER CODE BEGIN EXTI4_15_IRQn 1 */
+
+  /* USER CODE END EXTI4_15_IRQn 1 */
+}
+
+/**
 * @brief This function handles SPI1 global interrupt.
 */
+volatile uint8_t d;
 void SPI1_IRQHandler(void)
 {
   /* USER CODE BEGIN SPI1_IRQn 0 */
+    if(LL_SPI_IsActiveFlag_RXNE(SPI1)){
+        d = (LL_SPI_ReceiveData8(SPI1));
+        //d = !d;
 
+        extern uint8_t sensor_spi_rxc(uint8_t t);
+        uint8_t x = sensor_spi_rxc(d);
+        LL_SPI_TransmitData8(SPI1, x);
+    }else if(LL_SPI_IsActiveFlag_TXE(SPI1)){
+        //extern uint8_t sensor_spi_rxc(uint8_t t);
+        //
+
+        d = d + (uint8_t)1;
+
+    }else if(LL_SPI_IsActiveFlag_OVR(SPI1))
+    {
+        d = 0xff;
+    }
   /* USER CODE END SPI1_IRQn 0 */
   /* USER CODE BEGIN SPI1_IRQn 1 */
 
+   // LL_SPI_Enable(SPI1);
   /* USER CODE END SPI1_IRQn 1 */
 }
 

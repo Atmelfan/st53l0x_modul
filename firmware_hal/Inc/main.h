@@ -70,6 +70,7 @@
 #define DGPIO_GPIO_Port GPIOA
 #define CS_Pin LL_GPIO_PIN_4
 #define CS_GPIO_Port GPIOA
+#define CS_EXTI_IRQn EXTI4_15_IRQn
 #define XSH2_Pin LL_GPIO_PIN_1
 #define XSH2_GPIO_Port GPIOB
 #ifndef NVIC_PRIORITYGROUP_0

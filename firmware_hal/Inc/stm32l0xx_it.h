@@ -40,6 +40,10 @@
 #endif 
 
 /* Includes ------------------------------------------------------------------*/
+#include "stm32l0xx.h"
+#include "stm32l0xx_ll_system.h"
+#include "stm32l0xx_ll_gpio.h"
+#include "stm32l0xx_ll_exti.h"
 #include "main.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -51,6 +55,7 @@ void HardFault_Handler(void);
 void SVC_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
+void EXTI4_15_IRQHandler(void);
 void SPI1_IRQHandler(void);
 
 #ifdef __cplusplus

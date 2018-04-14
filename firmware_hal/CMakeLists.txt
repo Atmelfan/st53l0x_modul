@@ -35,7 +35,7 @@ include_directories(Drivers/CMSIS/Include/)
 include_directories(Inc/)
 
 #ASM sources
-set(ASM_SOURCES startup_stm32l011xx.s)
+set(ASM_SOURCES startup_stm32l011xx.s registers.h)
 set_source_files_properties(startup_stm32l011xx.s PROPERTIES COMPILE_FLAGS "-x assembler-with-cpp") #Special compile flags
 
 #Compiler
@@ -52,18 +52,18 @@ set(MCU "${CPU} -mthumb ${FPU} ${FLOAT_ABI}")
 #Definitions
 add_definitions(-DUSE_FULL_LL_DRIVER)
 add_definitions(-DSTM32L011xx)
-add_definitions(-DUSE_I2C_2V8)
+add_definitions(-DUSE_i2C_2V8)
 
 #flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MCU} ${OPT} -Wall -fdata-sections -ffunction-sections")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -MMD -MP -flto")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -MMD -MP -flto -g")
 
 # link script
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32L011F4Ux_FLASH.ld)
 
 #linker
 set(LIBS "-lc -lm -lnosys")
-set(LDFLAGS "${MCU} -flto -specs=nano.specs -T${LINKER_SCRIPT} ${LIBS} -Wl,-Map=symbols.map,--cref -Wl,--gc-sections")
+set(LDFLAGS "${MCU} -flto -g -specs=nano.specs -T${LINKER_SCRIPT} ${LIBS} -Wl,-Map=symbols.map,--no-wchar-size-warning,--cref -Wl,--gc-sections -Wl,--print-memory-usage -fshort-wchar")
 
 #add linker flags
 set( CMAKE_CXX_FLAGS  "${LDFLAGS}" )
