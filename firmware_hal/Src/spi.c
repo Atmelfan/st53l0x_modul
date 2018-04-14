@@ -38,6 +38,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
+#include <stm32l0xx_ll_spi.h>
 #include "spi.h"
 
 #include "gpio.h"
@@ -63,7 +64,7 @@ void MX_SPI1_Init(void)
   GPIO_InitStruct.Pin = LL_GPIO_PIN_5;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  //GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   GPIO_InitStruct.Alternate = LL_GPIO_AF_0;
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -71,7 +72,7 @@ void MX_SPI1_Init(void)
   GPIO_InitStruct.Pin = LL_GPIO_PIN_6;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  //GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   GPIO_InitStruct.Alternate = LL_GPIO_AF_0;
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -79,7 +80,7 @@ void MX_SPI1_Init(void)
   GPIO_InitStruct.Pin = LL_GPIO_PIN_7;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  //GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   GPIO_InitStruct.Alternate = LL_GPIO_AF_0;
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -88,6 +89,8 @@ void MX_SPI1_Init(void)
   NVIC_SetPriority(SPI1_IRQn, 0);
   NVIC_EnableIRQ(SPI1_IRQn);
 
+
+  LL_SPI_Disable(SPI1);
   SPI_InitStruct.TransferDirection = LL_SPI_FULL_DUPLEX;
   SPI_InitStruct.Mode = LL_SPI_MODE_SLAVE;
   SPI_InitStruct.DataWidth = LL_SPI_DATAWIDTH_8BIT;
@@ -98,8 +101,8 @@ void MX_SPI1_Init(void)
   SPI_InitStruct.CRCCalculation = LL_SPI_CRCCALCULATION_DISABLE;
   SPI_InitStruct.CRCPoly = 7;
   LL_SPI_Init(SPI1, &SPI_InitStruct);
-
   LL_SPI_SetStandard(SPI1, LL_SPI_PROTOCOL_MOTOROLA);
+  //LL_SPI_Enable(SPI1);
 
 }
 

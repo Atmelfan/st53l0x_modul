@@ -35,7 +35,7 @@ include_directories(Drivers/CMSIS/Include/)
 include_directories(Inc/)
 
 #ASM sources
-set(ASM_SOURCES startup_stm32l011xx.s)
+set(ASM_SOURCES startup_stm32l011xx.s registers.h)
 set_source_files_properties(startup_stm32l011xx.s PROPERTIES COMPILE_FLAGS "-x assembler-with-cpp") #Special compile flags
 
 #Compiler
@@ -56,14 +56,14 @@ add_definitions(-DUSE_i2C_2V8)
 
 #flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MCU} ${OPT} -Wall -fdata-sections -ffunction-sections")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -MMD -MP -flto")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -MMD -MP -flto -g")
 
 # link script
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32L011F4Ux_FLASH.ld)
 
 #linker
 set(LIBS "-lc -lm -lnosys")
-set(LDFLAGS "${MCU} -flto -specs=nano.specs -T${LINKER_SCRIPT} ${LIBS} -Wl,-Map=symbols.map,--cref -Wl,--gc-sections -Wl,--print-memory-usage ")
+set(LDFLAGS "${MCU} -flto -g -specs=nano.specs -T${LINKER_SCRIPT} ${LIBS} -Wl,-Map=symbols.map,--no-wchar-size-warning,--cref -Wl,--gc-sections -Wl,--print-memory-usage -fshort-wchar")
 
 #add linker flags
 set( CMAKE_CXX_FLAGS  "${LDFLAGS}" )
@@ -74,6 +74,6 @@ add_subdirectory(vl53l0x_api)
 include_directories(${VL53L0x_INCLUDES})
 
 #executable
-add_executable(sensormod main.c ${ASM_SOURCES} ${HAL_SOURCES} ${HAL_HEADERS} ${VL53L0X_SOURCES} sensormodule.c)
+add_executable(sensormod main.c ${ASM_SOURCES} ${HAL_SOURCES} ${HAL_HEADERS} ${VL53L0X_SOURCES} sensormodule.c aspi.c aspi.h)
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
